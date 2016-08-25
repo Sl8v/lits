@@ -19,13 +19,14 @@ def dec2bin decimal # => 10.to_s(2) == 1010
 end
 
 def bin2dec binary  # => 1010.to_s.to_i(2) == 10
-  power = binary.size
+  size = binary.size
   dec = 0
-      binary.each_char do |d|
-          power -= 1
-          dec += d.to_i*2**(power)
+      #binary.split('').each do |d|
+      for d in 0..size
+          size -= 1
+          dec += binary[d].to_i*2**(size)
       end
-  return dec
+  return dec.to_i
 end
 
 puts "Decimal digit #{decimal} -> #{dec2bin(decimal)}"
