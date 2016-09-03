@@ -1,21 +1,25 @@
 #!/usr/bin/env ruby
-
-#ruby test.rb name=Test phone=898908 email=test@t.co
-
-#args = Hash[ ARGV.flat_map{|s| s.scan(/--?([^=\s]+)(?:=(\S+))?/) } ]
-args = {}
-ARGV.each do |arg|
-  match = /(?<key>.*?)=(?<value>.*)/.match(arg)
-  args[match[:key]] = match[:value]
+def usage
+  abort "USAGE: #{$0} name=NEW_NAME phone=898908 email=test@t.co"
 end
 
-  puts args['name'] + ' ' + args['phone']
-  puts ARGV.size
+usage unless ARGV.size == 3
 
-# new_name = ARGV[0]
-# new_mail = ARGV[1]
-# new_phone = ARGV[2]
-#
-# puts new_name
-# puts new_mail
-# puts new_phone
+new_name, new_phone, new_email = nil, nil, nil
+
+
+ARGV.each do |arg|
+  case arg
+  when /name=\w+$/       then new_name  = /name=(?<value>\w+$)/.match(arg)
+  when /phone=[\d]+$/    then new_phone = /phone=(?<value>[\d]+$)/.match(arg)
+  when /email=[\w.@]+$/  then new_email = /email=(?<value>[\w.@]+$)/.match(arg)
+    else
+      puts "bad argument: #{arg} <---"
+      usage
+  end
+end
+
+ puts "name: "  + new_name[:value]
+ puts "phone: " + new_phone[:value]
+ puts "email: " + new_email[:value]
+ 
