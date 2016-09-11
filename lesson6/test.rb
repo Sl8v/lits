@@ -5,18 +5,17 @@ end
 usage unless ARGV.size == 3
 
 #CONFIG and predefinements
-new_name, new_phone, new_email = nil, nil, nil
-old_name = 'Slav'
-old_mail = 'sl8v@mailinator.com'
+new_name, new_phone, new_email, new_content = nil, nil, nil, []
+old_name  = 'Slav'
+old_mail  = 'sl8v@mailinator.com'
 old_phone = '0635551234'
-src_file = 'lesson4.html'
-out_file = 'lesson6.html'
-new_content = []
-
+src_file  = 'lesson4.html'
+out_file  = 'lesson6.html'
+ 
 #args validation
 ARGV.each do |arg|
   case arg
-  when /name=[a-zA-z]+$/       then new_name  = /name=(?<value>[a-zA-z]+$)/.match(arg)
+  when /name=[a-zA-Z]+$/ then new_name  = /name=(?<value>[a-zA-Z]+$)/.match(arg)
   when /phone=[\d]+$/    then new_phone = /phone=(?<value>[\d]+$)/.match(arg)
   when /email=[\w.@]+$/  then new_email = /email=(?<value>[\w.@]+$)/.match(arg)
     else
