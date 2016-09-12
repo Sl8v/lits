@@ -1,39 +1,32 @@
 #!/usr/bin/env ruby
 
 
-=begin
-config:
-
-Circle: 1, 2
-Rectangle: 2,2
-Triangle: 2,3,3
-=end
-
-class Preparator
-    def open_config path
-      config = File.open(path)
-
-    end
-
-end
-
-
-
 class Area
+#attr_reader :area
 
 PI = Math::PI
 
+
+ class << self
+    def initialize (*sides_num)
+      @sides = sides_num.map(&:to_f)
+      @sides_total = @sides.size
+    end
+
+    def for_humans
+      puts "#{@figure} area raw value is: " + @area.to_s
+      puts 'Rounded value is: '             + @area.round.to_s
+    end
+
     def triangle first, second, third
-      first, second, third  = first.to_f, second.to_f,  third.to_f # TODO: move to_f in Preparator
-      semiperimeter = ((first + second + third)/2)
-      @figure = __method__
-      @area = Math.sqrt(semiperimeter * (semiperimeter - first) * (semiperimeter - second) * (semiperimeter - third))
-      for_humans
-      @area.round
+        semiperimeter = ((first + second + third)/2)
+        @figure = __method__
+        @area = Math.sqrt(semiperimeter * (semiperimeter - first) * (semiperimeter - second) * (semiperimeter - third))
+        for_humans
+        @area.round
     end
 
     def circle radius
-       radius = radius.to_f
        @figure = __method__
        @area = PI*radius**2
        for_humans
@@ -41,7 +34,58 @@ PI = Math::PI
     end
 
     def rectangle side_a, side_b
-      side_a, side_b = side_a.to_f, side_b.to_f
+      @figure = __method__
+      @area = side_a*side_b
+      for_humans
+      @area.round
+    end
+
+end
+
+#### for NEW object
+    def initialize (*sides_num)
+      @sides = sides_num.map(&:to_f)
+      @sides_total = @sides.size
+    end
+
+
+    def is_circle?
+      @sides_total == 1
+    end
+
+    def is_rectangle?
+      @sides_total == 2
+    end
+
+    def is_triangle?
+      @sides_total == 3
+    end
+
+    def radius
+      radius = @sides[0] if is_circle?
+    end
+
+    def triangle #first, second, third
+      return "is not triangle" unless is_triangle?
+      first, second, third  = @sides
+      semiperimeter = ((first + second + third)/2)
+      @figure = __method__
+      @area = Math.sqrt(semiperimeter * (semiperimeter - first) * (semiperimeter - second) * (semiperimeter - third))
+      for_humans
+      @area.round
+    end
+
+    def circle #radius
+       return "is not circle" unless is_circle?
+       @figure = __method__
+       @area = PI*radius**2
+       for_humans
+       @area.round
+    end
+
+    def rectangle
+      return "is not rectangle" unless is_rectangle?
+      side_a, side_b = @sides
       @figure = __method__
       @area = side_a*side_b
       for_humans
@@ -56,9 +100,3 @@ PI = Math::PI
     end
 
 end
-
-#private
-
-
-
-#puts triangle_heron( 3, 3, 3) # => 4;  5,5,5 => 11
