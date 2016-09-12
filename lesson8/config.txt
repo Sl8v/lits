@@ -13,3 +13,5 @@ Rectangle: 2,5
 ....
 Triangle: 2, 2, 1
 Circle: 3
+Triangle:
+Hexagon: 3,4,4,4,4,5

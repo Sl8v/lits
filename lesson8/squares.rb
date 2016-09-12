@@ -10,6 +10,11 @@ Triangle: 2,3,3
 =end
 
 class Preparator
+    def open_config path
+      config = File.open(path)
+
+    end
+
 end
 
 
