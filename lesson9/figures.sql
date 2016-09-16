@@ -16,6 +16,54 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `errors`
+--
+
+DROP TABLE IF EXISTS `errors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `errors` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `figure_param_id` int(11) NOT NULL,
+  `content` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `errors`
+--
+
+LOCK TABLES `errors` WRITE;
+/*!40000 ALTER TABLE `errors` DISABLE KEYS */;
+/*!40000 ALTER TABLE `errors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `figure_params`
+--
+
+DROP TABLE IF EXISTS `figure_params`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `figure_params` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `figure_id` int(11) NOT NULL,
+  `options` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `figure_params`
+--
+
+LOCK TABLES `figure_params` WRITE;
+/*!40000 ALTER TABLE `figure_params` DISABLE KEYS */;
+/*!40000 ALTER TABLE `figure_params` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `figures`
 --
 
@@ -23,9 +71,10 @@ DROP TABLE IF EXISTS `figures`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `figures` (
-  `figure_id` int(11) NOT NULL AUTO_INCREMENT,
-  `figure_name` varchar(100) NOT NULL,
-  PRIMARY KEY (`figure_id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `properties` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -46,11 +95,12 @@ DROP TABLE IF EXISTS `formulas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `formulas` (
-  `formula_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `figure_id` int(11) NOT NULL,
-  `formula_name` varchar(255) NOT NULL,
-  `formula_content` varchar(255) NOT NULL,
-  PRIMARY KEY (`formula_id`)
+  `name` varchar(255) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `arguments` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -71,8 +121,11 @@ DROP TABLE IF EXISTS `squares`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `squares` (
-  `figure_id` int(11) NOT NULL,
-  `square` int(11) NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `formula_id` int(11) NOT NULL,
+  `figure_param_id` int(11) NOT NULL,
+  `result` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -94,4 +147,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-14 17:02:39
+-- Dump completed on 2016-09-16 17:57:31
