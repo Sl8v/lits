@@ -1,0 +1,9 @@
+mysql:
+  host: 'localhost'
+  user: 'root'
+  password: 'toor'
+  database: 'downloads'
+
+sqlite:
+  host: 'localhost'
+  database_name: 'mime2db.sqlite3'

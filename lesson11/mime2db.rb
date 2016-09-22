@@ -4,7 +4,10 @@ class FileSorter
 
   require 'mysql2'
   require 'mime/types'
+  require 'yaml'
   #require 'filemagic'
+
+  my_config = YAML.load_file('config.yml')
 
   @@client = nil
   @@query = ''
@@ -128,7 +131,7 @@ end
 pathdir  = "/home/hatchet/Videos"
 dir = FileSorter.new(pathdir)
 
-dir.mime_morpheus   #RUN THIS ONCE, TODO: add checks for empty table
+#dir.mime_morpheus   #RUN THIS ONCE, TODO: add checks for empty table
 
 dir.db_select('mimetypes', "*" ).get
 dir.read_folder(pathdir)
