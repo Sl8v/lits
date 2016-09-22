@@ -15,6 +15,32 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+DROP TABLE IF EXISTS `results`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `results` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mimetype_id` int(11) NOT NULL,
+  `file_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `mimetype_id` (`mimetype_id`),
+  KEY `file_id` (`file_id`),
+  CONSTRAINT `results_ibfk_1` FOREIGN KEY (`mimetype_id`) REFERENCES `mimetypes` (`id`),
+ CONSTRAINT `results_ibfk_2` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `results`
+--
+
+LOCK TABLES `results` WRITE;
+/*!40000 ALTER TABLE `results` DISABLE KEYS */;
+/*!40000 ALTER TABLE `results` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
 DROP TABLE IF EXISTS `files`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -65,30 +91,6 @@ CREATE TABLE `mimetypes` (
 -- Table structure for table `results`
 --
 
-DROP TABLE IF EXISTS `results`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `results` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mimetype_id` int(11) unsigned NOT NULL,
-  `file_id` int(11) unsigned NOT NULL,
-  -- `result` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `mimetype_id` (`mimetype_id`),
-  KEY `file_id` (`file_id`)
-  -- CONSTRAINT `files_ibfk_1` FOREIGN KEY (`mimetype_id`) REFERENCES `mimetypes` (`id`),
-  -- CONSTRAINT `files_ibfk_2` FOREIGN KEY (`file_id`) REFERENCES `files` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `results`
---
-
-LOCK TABLES `results` WRITE;
-/*!40000 ALTER TABLE `results` DISABLE KEYS */;
-/*!40000 ALTER TABLE `results` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
