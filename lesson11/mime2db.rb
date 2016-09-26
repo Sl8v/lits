@@ -8,11 +8,6 @@ class FileSorter
   #require 'filemagic'
 
   my_config = YAML.load_file('config.yml')
-  p my_config
-  exit
-  # my_config = File.read File.join(Rails.root, 'config', 'my.yml')
-  # NXSIEM_CONFIG = YAML.load(my_config)[Rails.env]
-
 
   @@client = nil
   @@query = ''

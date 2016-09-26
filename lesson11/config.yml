@@ -6,4 +6,4 @@ mysql:
 
 sqlite:
   host: 'localhost'
-  database_name: 'downloads.sqlite3'
+  database_name: 'mime2db.sqlite3'
