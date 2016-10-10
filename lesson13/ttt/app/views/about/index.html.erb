@@ -3,17 +3,18 @@
 <head>
   <%= content_tag(:h2, "Lesson XIII - HOMETASK") %>
 
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 </head>
 <title>
   Lesson 4 - Home Task - about me
 </title>
 <body>
-  <img src="https://avatars.slack-edge.com/2016-08-23/72154363424_75e2c076945cb401e6b8_192.png">
+  <%= image_tag 'https://avatars.slack-edge.com/2016-08-23/72154363424_75e2c076945cb401e6b8_192.png' %>
+
   <%= content_tag(:h3, "Slav aka Sl8v") %>
     <%= content_tag :div, class: "container-fluid" do -%>
        <%= content_tag(:p, content_tag(:h4, "Interests:")) %>
@@ -24,10 +25,10 @@
 
     <%= content_tag :div, class: "container-fluid" do -%>
        <%= content_tag(:p, content_tag(:h4, "Useful links:")) %>
-       <%= content_tag(:p, (link_to "Railscasts", "http://railscasts.com/", target: "_blank", rel: "nofollow")) %>
-       <%= content_tag(:p, (link_to "TRY RUBY", "http://tryruby.org/", target: "_blank", rel: "nofollow")) %>
-       <%= content_tag(:p, (link_to "Rails in RU", "http://rusrails.ru/", target: "_blank", rel: "nofollow")) %>
-       <%= content_tag(:p, (link_to "Ruby API online", "http://apidock.com/ruby", target: "_blank", rel: "nofollow")) %>
+       <%= content_tag(:p, (link_to "Railscasts",     "http://railscasts.com/", target: "_blank", rel: "nofollow")) %>
+       <%= content_tag(:p, (link_to "TRY RUBY",       "http://tryruby.org/", target: "_blank", rel: "nofollow")) %>
+       <%= content_tag(:p, (link_to "Rails in RU",    "http://rusrails.ru/", target: "_blank", rel: "nofollow")) %>
+       <%= content_tag(:p, (link_to "Ruby API online","http://apidock.com/ruby", target: "_blank", rel: "nofollow")) %>
     <% end -%>
 
 <%= content_tag(:h3, "Drop me a word ") %>
@@ -42,6 +43,5 @@ Comment:<br>
 <input type="submit" value="Send">
 <input type="reset" value="Reset">
 </form>
-All rights to lefts (c) 2016
 </body>
 <!-- </html> -->
