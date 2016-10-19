@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
 
-  has_many :twits
-  
+  has_many :twits, dependent: :destroy
+
 end
