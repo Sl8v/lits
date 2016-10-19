@@ -14,7 +14,7 @@
   <tbody>
     <% @twits.each do |twit| %>
       <tr>
-        <td><%= twit.user.nickname %></td>
+        <td><%= twit.user.try(:nickname) %></td>
         <td><%= twit.content %></td>
         <td><%= link_to 'Show', twit %></td>
         <td><%= link_to 'Edit', edit_twit_path(twit) %></td>
