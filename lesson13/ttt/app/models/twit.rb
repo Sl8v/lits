@@ -5,5 +5,6 @@ class Twit < ActiveRecord::Base
                       # :content => { :minimum => 5 }
 
   has_many :comments, dependent: :destroy
+  has_many :tags
 
 end
