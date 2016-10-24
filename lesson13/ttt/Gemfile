@@ -32,11 +32,14 @@ gem "therubyracer"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "select2-rails"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 #  gem 'jazz_hands'
   gem 'byebug'
+  gem 'awesome_print'
 end
 
 group :development do

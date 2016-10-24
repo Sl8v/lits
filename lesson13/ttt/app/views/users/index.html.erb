@@ -2,7 +2,7 @@
 
 <h1>Listing Users</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Nickname</th>
@@ -12,12 +12,16 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @users.each do |user| %>
       <tr>
         <td><%= user.nickname %></td>
         <td><%= user.email %></td>
-        <td><%= user.avatar %></td>
+        <td>
+          <% user.avatar = 'https://robohash.org/' + user.nickname if user.avatar.empty?%>
+          <%= image_tag user.avatar, size: "32" %>
+        </td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path, {class: "btn btn-info", role: "button"} %>
