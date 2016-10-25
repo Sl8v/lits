@@ -2,7 +2,7 @@ class CreateTags < ActiveRecord::Migration
   def change
     create_table :tags do |t|
       t.string :name
-      t.references :twit, index: true, foreign_key: true
+      # t.references :twit, index: true, foreign_key: true
 
       t.timestamps null: false
     end

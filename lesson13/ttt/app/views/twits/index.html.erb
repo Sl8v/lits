@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Twits</h1>
+<h3>Listing Twits</h3>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>User</th>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= twit.user.try(:nickname) %></td>
         <td><%= twit.content %></td>
-        <td><%= link_to 'Show', twit %></td>
-        <td><%= link_to 'Edit', edit_twit_path(twit) %></td>
-        <td><%= link_to 'Destroy', twit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to ' Show ', twit %></td>
+        <td><%= link_to ' Edit ', edit_twit_path(twit) %></td>
+        <td><%= link_to ' Destroy ', twit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Twit', new_twit_path %>
+<%= link_to 'New Twit', new_twit_path,  {class: "btn btn-info", role: "button"}%>

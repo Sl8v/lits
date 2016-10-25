@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @twit.user_id %>
+  <b>User:</b>
+  <%= @twit.user.nickname %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <b>Content:</b>
   <%= @twit.content %>
 </p>
 
@@ -16,27 +16,56 @@
     <b>Commenter:</b>
     <%= comment.user.try(:nickname) %>
   </p>
-
   <p>
     <b>Comment:</b>
     <%= comment.body %>
   </p>
+
 <% end %>
+
+
 
 <h2>Add a comment:</h2>
 <%= form_for([@twit, @twit.comments.build]) do |f| %>
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
+    <!-- <%#= f.label :user_id %><br /> -->
+    <%#= f.text_field :user_id %>
+  <%= f.collection_select(:user_id, User.all, :id, :nickname, {prompt: 'Select commentor'}) %>
+</div>
+    <%#= f.label :body %>
+    <div class="field">
     <%= f.text_area :body %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<p><b>Tags:</b>
+    <% @twit.tags.each do |tag| %>
+    <%= link_to tag.name, twit_path %>
+    <% end %>
+</p>
+
+
+<!-- <h2>Add a tag:</h2> -->
+<%#= form_for([@twit, @twit.comments.build]) do |f| %>
+  <!-- <div class="field"> -->
+    <!-- <%#= f.label :user_id %><br /> -->
+    <%#= f.text_field :user_id %>
+  <%#= f.collection_select(:user_id, User.all, :id, :nickname, {prompt: 'Select tag'}) %>
+<!-- </div> -->
+<%#= select("twit", "id", Tag.all.collect {|p| [ p.name, p.id ] },
+ { include_blank: 'tag'}, {multiple: true, class: "js-example-basic-multiple" })
+%>
+<%# end %>
+
+<!-- <select class="js-example-basic-multiple" multiple="multiple">
+
+  <option value="AL">Alabama</option>
+  <option value="WY">Wyoming</option>
+</select> -->
 
 
 <%= link_to 'Edit', edit_twit_path(@twit) %> |
