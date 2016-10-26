@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  before_destroy { false if self.nickname == 'Admin'}
   before_save { self.email = email.downcase }
   has_many :twits, dependent: :destroy
 

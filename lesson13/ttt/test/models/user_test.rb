@@ -45,14 +45,30 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should destroy user' do
+    user = users(:one)
     assert_difference('User.count', -1) do
-      @user.destroy
+      # user = User.create(nickname: 'test', email: 'a@2.com')
+      user.destroy
     end
   end
 
+  # test 'should not destroy user' do
+  #   assert_no_difference('User.count') do
+  #     @user.destroy
+  #   end
+  # end
+
   test 'should not destroy user' do
-    assert_difference('User.count', -1) do
-      User.find(100).destroy
+    user = User.create(nickname: 'Admin', email: 'admin@gmail.com')
+    assert_no_difference('User.count') do
+      user.destroy
     end
   end
+  # test 'should not destroy user' do
+  #   # assert_difference('User.count', -1) do
+  #   #   User.find(100).destroy
+  #   # end
+  #   @user.destroy
+  #   assert false
+  # end
 end
